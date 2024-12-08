@@ -40,19 +40,28 @@ function updateBookDisplay() {
 
     const readButton = document.createElement("button");
     readButton.classList.add("read-button");
-    readButton.textContent = "Read";
+
+    if (book.isRead) {
+      readButton.textContent = "Read";
+      readButton.style.backgroundColor = "lightgreen";
+    } else {
+      readButton.textContent = "Unread";
+      readButton.style.backgroundColor = "crimson";
+    }
+
     readButton.addEventListener("click", () => {
       if (readButton.textContent === "Read") {
         readButton.textContent = "Unread";
         readButton.style.backgroundColor = "crimson";
-        numberOfBooksRead--;
-        if (numberOfBooksRead < 0) numberOfBooksRead = 0;
+        numberOfBooksRead = Math.max(numberOfBooksRead - 1, 0);
+        book.isRead = false;
       } else {
         readButton.textContent = "Read";
         readButton.style.backgroundColor = "lightgreen";
         numberOfBooksRead++;
+        book.isRead = true;
       }
-      console.log(`Books read: ${numberOfBooksRead}`);
+      updateBooksRead();
     });
 
     const removeButton = document.createElement("button");
@@ -94,12 +103,22 @@ form.addEventListener("submit", (e) => {
   const author = document.querySelector("#author").value.trim();
   const genre = document.querySelector("#genre").value.trim();
   const rating = document.querySelector("#rating").value.trim();
+  const isChecked = document.querySelector("#read").checked;
+  if (isChecked) numberOfBooksRead++;
 
   const newBook = new Book(title, author, genre, rating);
+  newBook.isRead = isChecked;
+
   addBookToLibrary(newBook);
   updateBookDisplay();
+  updateBooksRead();
 
   form.reset();
   modal.classList.remove("show");
   modal.classList.add("hidden");
 });
+
+function updateBooksRead() {
+  const booksReadElement = document.querySelector("#books-read-label");
+  booksReadElement.textContent = `Books Read: ${numberOfBooksRead}`;
+}
