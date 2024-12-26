@@ -2,7 +2,7 @@ const myLibrary = [];
 
 const modal = document.querySelector(".modal");
 const addBookButton = document.querySelector(".open-modal-btn");
-const form = document.querySelector(".book-form");
+const form = document.querySelector(".form");
 const cancelButton = document.querySelector(".cancel-btn");
 const bookContainer = document.querySelector(".book-container");
 

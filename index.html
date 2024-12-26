@@ -23,7 +23,7 @@
 
       <main>
         <section class="add-book-section">
-          <h3 id="books-read-label">Book's Read: 0</h3>
+          <h3 id="books-read-label">Books Read: 0</h3>
           <button class="open-modal-btn">
             <i class="fa-solid fa-plus"></i> Add Book
           </button>
@@ -34,45 +34,48 @@
 
     <div class="modal hidden" role="dialog">
       <div class="modal-content">
-        <h1 id="modal-title">Add A New Book</h1>
-        <form class="book-form">
-          <input
-            type="text"
-            id="title"
-            name="title"
-            placeholder="Title"
-            required
-          />
-
-          <input
-            type="text"
-            id="author"
-            name="author"
-            placeholder="Author"
-            required
-          />
-
-          <input type="text" id="genre" name="genre" placeholder="Genre" />
-
-          <input
-            type="number"
-            id="rating"
-            name="rating"
-            min="1"
-            max="5"
-            placeholder="Rating"
-          />
-
-          <div class="read-box">
-            <label for="read">
-              Read?
-              <input type="checkbox" id="read" name="read" />
-            </label>
-          </div>
-
+        <form class="form">
+          <p class="title">Add Book</p>
+          <p class="message">Fill in the details below.</p>
+          <label>
+            <input
+              required
+              type="text"
+              class="input"
+              id="title"
+              placeholder="Title"
+            />
+          </label>
+          <label>
+            <input
+              required
+              type="text"
+              class="input"
+              id="author"
+              placeholder="Author"
+            />
+          </label>
+          <label>
+            <input type="text" class="input" id="genre" placeholder="Genre" />
+          </label>
+          <label>
+            <input
+              type="number"
+              class="input"
+              id="rating"
+              min="1"
+              max="5"
+              placeholder=""
+            />
+            <p>Rating</p>
+          </label>
+          <label class="flex">
+            <input type="checkbox" id="read" class="input" />
+            <span>Read?</span>
+          </label>
           <div class="buttons">
             <button type="button" class="cancel-btn">Cancel</button>
-            <button type="submit" class="submit-btn">Submit</button>
+            <button type="submit" class="submit-btn submit">Submit</button>
           </div>
         </form>
       </div>
